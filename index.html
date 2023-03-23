@@ -7,16 +7,65 @@ function getComputerChoice() {
     randomNumber=Math.floor(10*(Math.random())); // random number between 0 and 10, rounded down
 
     if (randomNumber<=3) {
-        computerChoice="Rock";
+        computerChoice="rock";
     } else if (randomNumber>3 && randomNumber<=6) {
-        computerChoice="Paper";
+        computerChoice="paper";
     } else {
-        computerChoice="Scissors";
+        computerChoice="scissors";
     }
     return computerChoice;
 }
 
-test=getComputerChoice();
-console.log(test)
+
+
+// function that plays a single round of the game
+// take playerSelection and computerSelection as parameters
+// return a string that declares the winner of the round
+
+function playRound(playerSelection, computerSelection) {
+    if (playerSelection === computerSelection) {
+        message="TIE! Play again!";
+        return message;
+    }
+
+    if (playerSelection==="rock" && computerSelection==="scissors") {
+        message="You win! Perfect!";
+        return message;
+    }
+
+    if (playerSelection==="rock" && computerSelection==="paper") {
+        message="You lose!";
+        return message;
+    }
+
+    if (playerSelection==="paper" && computerSelection==="rock") {
+        message="You win! Perfect!";
+        return message;
+    }
+
+    if (playerSelection==="paper" && computerSelection==="scissors") {
+        message="You lose!";
+        return message;
+    }
+
+    if (playerSelection==="scissors" && computerSelection==="paper") {
+        message="You win! Perfect!";
+        return message;
+    }
+
+    if (playerSelection==="scissors" && computerSelection==="rock") {
+        message="You lose!";
+        return message;
+    }
+}
+
+/////
+
+
+const playerSelection=getComputerChoice();
+const computerSelection=getComputerChoice();
+
+const result=playRound(playerSelection, computerSelection);
+console.log("Player: ", playerSelection, "Computer: ", computerSelection, "Result: ", result);
 
 </script>
