@@ -1,0 +1,22 @@
+<script>
+
+
+// create a function called getComputerChoice
+function getComputerChoice() {
+
+    randomNumber=Math.floor(10*(Math.random())); // random number between 0 and 10, rounded down
+
+    if (randomNumber<=3) {
+        computerChoice="Rock";
+    } else if (randomNumber>3 && randomNumber<=6) {
+        computerChoice="Paper";
+    } else {
+        computerChoice="Scissors";
+    }
+    return computerChoice;
+}
+
+test=getComputerChoice();
+console.log(test)
+
+</script>
