@@ -23,6 +23,15 @@ function getComputerChoice() {
 // return a string that declares the winner of the round
 
 function playRound(playerSelection, computerSelection) {
+
+    playerSelection=playerSelection.trim();
+    playerSelection=playerSelection.toLowerCase();
+
+    if (playerSelection != "rock" && playerSelection!="paper" && playerSelection!="scissors") {
+        message="Player input not valid";
+        return message;
+    }
+
     if (playerSelection === computerSelection) {
         message="TIE! Play again!";
         return message;
@@ -59,13 +68,71 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
+
+// Function to play a 5 round game that keeps score and reports a winner or loser at the end
+// use prompt() to get input from the user
+// turn user input all lower case
+// check if user input is a valid choice
+// play round 1
+// update score
+// display round results and updated score
+// ...
+// play round 5 
+// update score
+// display round results and updated score
+// report winner / loser based on score at the end
+
+function game() {
+    playerScore=0;
+    computerScore=0;
+    
+    for (let i=1; i <=5; i++) {
+        playerSelection=prompt("Rock? Paper? Scissors? Choose your destiny!");
+        computerSelection=getComputerChoice();
+
+        round=playRound(playerSelection, computerSelection);
+        if (round === "You win! Perfect!") {
+            playerScore=playerScore+1;
+        }
+    
+        if (round === "You lose!") {
+            computerScore=computerScore+1;
+        }
+
+        if (round === "TIE! Play again!") {
+            playerScore=playerScore+1;
+            computerScore=computerScore+1;
+        }
+
+        if (round === "Player input not valid") {
+            console.log(round, "Try again");
+            return;
+        }
+        console.log("Round ", i, ": ", "Player: ", playerSelection, "Computer: ", computerSelection, "Round result: ", round);
+        console.log("Updated score: ", "Player: ", playerScore, "Computer: ", computerScore);        
+    }
+
+    if (playerScore === computerScore) {
+        result="TIE!";
+        console.log("Final result: ", result);
+    }
+
+    if (playerScore > computerScore) {
+        result="You win! Perfect";
+        console.log("Final result: ", result);
+    }
+
+    if (playerScore < computerScore) {
+        result="You lose!";
+        console.log("Final result: ", result);
+    }
+}
+
+
 /////
 
+game();
 
-const playerSelection=getComputerChoice();
-const computerSelection=getComputerChoice();
 
-const result=playRound(playerSelection, computerSelection);
-console.log("Player: ", playerSelection, "Computer: ", computerSelection, "Result: ", result);
 
 </script>
